@@ -1,7 +1,7 @@
 # fwb98daleske
 
 ## Daleske new server using Express and PUG
-### Hosted at: https://fwb98daleske.herokuapp.com/
+### Hosted at: https://db98daleske.herokuapp.com/
 
 ---
 ### Drinks class
