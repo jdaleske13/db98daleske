@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p This is Daleske's website #{title}
+  button(type="button", class="btn btn-secondary", onclick="update()") Use Me
+  div(id="target") Display
+  script.
+    var client_count = 0;
+    function update() {
+      client_count = client_count + 1;
+      document.getElementById("target").innerHTML = "Value Now " + client_count
+    }
+  a(href="/drinks") Drinks search results

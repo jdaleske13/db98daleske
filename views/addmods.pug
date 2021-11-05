@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  p This is Daleske's website #{title}
+  p Rows: #{query.rows} 
+  p Columns: #{query.cols}
+  - rows = Number(query.rows)
+  - col = Number(query.cols)
+  if Number.isInteger(rows) == false 
+    p rows is not a number 
+  
+  if Number.isInteger(col) == false
+    p col is not a number
+
+  if rows < 1
+    p rows are too small 
+  else if rows > 6
+    p rows are too big 
+
+  if col < 1
+    p columns are too small 
+  else if col > 6
+    p columns are too big 
+  
+  else 
+    table#outer 
+      -for(let i=0; i<6; i++){
+        tr#middle 
+          -for(let j=0; j<6; j++){
+            td= (i+j)%rows
+          -}
+      -}

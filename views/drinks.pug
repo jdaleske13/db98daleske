@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  p This is Daleske's website #{title}
+  - var results = ['drink_name', 'drink_cost', 'drink_flavor']
+  div(class="container-fluid")
+  div(class="row")
+  each item in results
+    div(class="col-sm-2") #{item}
