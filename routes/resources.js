@@ -15,3 +15,4 @@ router.put('/resources.drinks/:id', drinks_controller.drink_update_put);
 router.get('/resources/drinks/:id', drinks_controller.drink_detail);
 router.get('/resources/drinks', drinks_controller.drink_list);
 
+module.exports = router;
