@@ -32,10 +32,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/drinks',drinksRouter);
+app.use('/drinks', drinksRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
-app.use('./resources', resourcesRouter);
+app.use('/resources', resourcesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -10,7 +10,7 @@ router.post('/resources/drinks', drinks_controller.drink_create_post);
 
 router.delete('/resources/drinks/:id', drinks_controller.drink_delete);
 
-router.put('/resources.drinks/:id', drinks_controller.drink_update_put);
+router.put('/resources/drinks/:id', drinks_controller.drink_update_put);
 
 router.get('/resources/drinks/:id', drinks_controller.drink_detail);
 router.get('/resources/drinks', drinks_controller.drink_list);
