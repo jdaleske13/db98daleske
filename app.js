@@ -15,7 +15,7 @@ var usersRouter = require('./routes/users');
 var drinksRouter = require('./routes/drinks');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
-var resourcesRouter = require('./routes/resources');
+var resourcesRouter = require('./routes/resource');
 const { start } = require('repl');
 
 var app = express();
@@ -35,7 +35,7 @@ app.use('/users', usersRouter);
 app.use('/drinks', drinksRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
-app.use('/resources', resourcesRouter);
+app.use('/resource', resourcesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
