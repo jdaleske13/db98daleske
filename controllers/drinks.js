@@ -15,8 +15,20 @@ exports.drink_detail = function(req, res) {
     res.send('NOT IMPLEMENT: Drink Detail: ' +req.params.id);
 }
 
-exports.drink_create_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: Drink create POST');
+exports.drink_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new Drink();
+    document.drink_name = req.body.drink_name;
+    document.drink_flavor = req.body.drink_flavor;
+    document.drink_cost = req.body.drink_cost;
+    try{
+        let results = await document.save();
+        res.send(results);
+    }
+    catch(err){
+        res.status(500);
+        res.send('{"error":${err}}');
+    }
 }
 
 exports.drink_delete = function(req, res) {
