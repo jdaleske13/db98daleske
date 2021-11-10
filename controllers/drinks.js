@@ -1,7 +1,14 @@
 var Drink = require('../models/drinks');
 
-exports.drink_list = function(req, res) {
-    res.send('NOT IMPLEMENTED: Drink List');
+exports.drink_list = async function(req, res) {
+    try{
+        theDrinks = await Drink.find();
+        res.send(theDrinks);
+    }
+    catch(err){
+        res.status(500);
+        res.send('{"error": ${err}}');
+    }
 }
 
 exports.drink_detail = function(req, res) {
@@ -18,4 +25,14 @@ exports.drink_delete = function(req, res) {
 
 exports.drink_update_put = function(req,res) {
     res.send('NOT IMPLEMENTED: Drink update PUT' + req.params.ids);
+}
+exports.drink_view_all_Page = async function(req,res) {
+    try{
+        theDrinks = await Drink.find();
+        res.render("drinks", {title: 'Drink Search Results', results: theDrinks});
+    }
+    catch(err){
+        res.status(500);
+        res.send('{"error": ${err}}');
+    }
 }
