@@ -4,15 +4,15 @@ var router = express.Router();
 var api_controller = require('../controllers/api');
 var drinks_controller = require('../controllers/drinks');
 
-router.get('/resource', api_controller.api);
+router.get('/', api_controller.api);
 
-router.post('/resource/drink', drinks_controller.drink_create_post);
+router.post('/drink', drinks_controller.drink_create_post);
 
-router.delete('/resource/drink/:id', drinks_controller.drink_delete);
+router.delete('/drink/:id', drinks_controller.drink_delete);
 
-router.put('/resource/drink/:id', drinks_controller.drink_update_put);
+router.put('/drink/:id', drinks_controller.drink_update_put);
 
-router.get('/resource/drink/:id', drinks_controller.drink_detail);
-router.get('/resource/drink', drinks_controller.drink_list);
+router.get('/drink/:id', drinks_controller.drink_detail);
+router.get('/drink', drinks_controller.drink_list);
 
 module.exports = router;
