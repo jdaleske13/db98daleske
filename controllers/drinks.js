@@ -1,3 +1,4 @@
+const drinks = require('../models/drinks');
 var Drink = require('../models/drinks');
 
 exports.drink_list = async function(req, res) {
@@ -11,8 +12,16 @@ exports.drink_list = async function(req, res) {
     }
 }
 
-exports.drink_detail = function(req, res) {
-    res.send('NOT IMPLEMENT: Drink Detail: ' +req.params.id);
+exports.drink_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        result = await Drink.findById(req.params.id)
+        res.send(result)
+    }
+    catch(error){
+        res.statu(500)
+        res.send('{"error": document for id${req.params.id} not found');
+    }
 }
 
 exports.drink_create_post = async function(req, res) {
@@ -35,9 +44,26 @@ exports.drink_delete = function(req, res) {
     res.send('NOT IMPLEMENTED: Drink delete DELETE ' + req.params.id);
 }
 
-exports.drink_update_put = function(req,res) {
-    res.send('NOT IMPLEMENTED: Drink update PUT' + req.params.ids);
-}
+exports.drink_update_put = async function(req,res) {
+    console.log('update on id ${req.params.id} with body ${JSON.stringify(req.body)}')
+    try {
+        let toUpdate = await Drink.findById(req.params.id)
+        if(req.body.drink_name)
+            toUpdate.drink_name=req.body.drink_name;
+        if(req.body.drink_cost) toUpdate.drink_cost = req.body.drink_cost;
+        if(req.body.drink_flavor) toUpdate.drink_flavor = req.body.drink_flavor;
+        let result = await toUpdate.save();
+        console.log("Success " + result)
+        res.send(result)
+        if(req.body.checkboxsale) toUpdate.sale = true; 
+        else toUpdate.same = false; 
+    }
+    catch(err){
+        res.status(500)
+        res.send('{"error":${err}: Update for id${req.params.id} failed')
+    }
+};
+
 exports.drink_view_all_Page = async function(req,res) {
     try{
         theDrinks = await Drink.find();
