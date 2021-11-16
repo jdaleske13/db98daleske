@@ -6,5 +6,6 @@ var router = express.Router();
 router.get('/', drinks_controller.drink_view_all_Page);
 router.get('/detail', drinks_controller.drink_view_one_Page);
 router.get('/create', drinks_controller.drink_create_Page);
+router.get('/update', drinks_controller.drink_update_Page);
 
 module.exports = router;

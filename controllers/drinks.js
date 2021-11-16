@@ -106,3 +106,15 @@ exports.drink_create_Page = async function(req, res) {
         res.send(`{'error'}: '${err}'}'`);
     }
 }
+
+exports.drink_update_Page = async function(req, res){
+    console.log("update view for item " + req.query.id)
+    try{
+        let result = await Drink.findById(req.query.id)
+        res.render('drinkupdate', {title: 'Drink Update', toShow: result});
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+}
