@@ -118,3 +118,15 @@ exports.drink_update_Page = async function(req, res){
         res.send(`{'error': '${err}'}`);
     }
 }
+
+exports.drink_delete_Page = async function(req, res){
+    console.log("Delete view for id " + req.query.id)
+    try{
+        result = await Drink.findById(req.query.id)
+        res.render("drinkdelete", { title: 'Drink Delete', toShow: result})
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+}
