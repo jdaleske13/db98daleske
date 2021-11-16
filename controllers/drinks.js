@@ -40,8 +40,17 @@ exports.drink_create_post = async function(req, res) {
     }
 }
 
-exports.drink_delete = function(req, res) {
-    res.send('NOT IMPLEMENTED: Drink delete DELETE ' + req.params.id);
+exports.drink_delete = async function(req, res) {
+    console.log("delete" + req.params.id)
+    try {
+        result = await Drink.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    }
+    catch(err){
+        res.status(500)
+        res.send('{"error": Error deleting ${err}}');
+    }
 }
 
 exports.drink_update_put = async function(req,res) {
