@@ -4,5 +4,6 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', drinks_controller.drink_view_all_Page);
+router.get('/detail', drinks_controller.drink_view_one_Page);
 
 module.exports = router;

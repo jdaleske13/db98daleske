@@ -1,0 +1,21 @@
+extends layout 
+block content 
+    h1= title
+
+    - let drinkid = toShow._id 
+    - let drink_name = toShow.drink_name 
+    - let drink_cost = toShow.drink_cost 
+    - let drink_flavor =  toShow.drink_flavor 
+    div 
+        div.row 
+            div(class='drinkAttr mr-3') Drink ID is: 
+            div #{drinkid}
+        div.row
+            div(clas='drinkAttr mr-3') Drink Name is: 
+            div #{drink_name}
+        div.row
+            div(class='drinkAttr mr-3') Drink Cost is: 
+            div #{drink_cost}
+        div.row 
+            div(class='drinkAttr mr-3') Drink Flavor is: 
+            div #{drink_flavor}

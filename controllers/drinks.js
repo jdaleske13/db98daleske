@@ -8,7 +8,7 @@ exports.drink_list = async function(req, res) {
     }
     catch(err){
         res.status(500);
-        res.send('{"error": ${err}}');
+        res.send(`{"error": ${err}}`);
     }
 }
 
@@ -20,7 +20,7 @@ exports.drink_detail = async function(req, res) {
     }
     catch(error){
         res.statu(500)
-        res.send('{"error": document for id${req.params.id} not found');
+        res.send(`{"error": document for id${req.params.id} not found`);
     }
 }
 
@@ -36,7 +36,7 @@ exports.drink_create_post = async function(req, res) {
     }
     catch(err){
         res.status(500);
-        res.send('{"error":${err}}');
+        res.send(`{"error":${err}}`);
     }
 }
 
@@ -49,7 +49,7 @@ exports.drink_delete = async function(req, res) {
     }
     catch(err){
         res.status(500)
-        res.send('{"error": Error deleting ${err}}');
+        res.send(`{"error": Error deleting ${err}}`);
     }
 }
 
@@ -69,7 +69,7 @@ exports.drink_update_put = async function(req,res) {
     }
     catch(err){
         res.status(500)
-        res.send('{"error":${err}: Update for id${req.params.id} failed')
+        res.send(`{"error":${err}: Update for id${req.params.id} failed`)
     }
 };
 
@@ -80,6 +80,18 @@ exports.drink_view_all_Page = async function(req,res) {
     }
     catch(err){
         res.status(500);
-        res.send('{"error": ${err}}');
+        res.send(`{"error": ${err}}`);
+    }
+}
+
+exports.drink_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+        result = await Drink.findById(req.query.id)
+        res.render('drinkdetail', {title: 'Drink Detail', toShow: result});
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
     }
 }
