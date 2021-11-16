@@ -95,3 +95,14 @@ exports.drink_view_one_Page = async function(req, res) {
         res.send(`{'error': '${err}'}`);
     }
 }
+
+exports.drink_create_Page = async function(req, res) {
+    console.log("create view")
+    try{
+        res.render('drinkcreate', {title: 'Drink Create'});
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error'}: '${err}'}'`);
+    }
+}
