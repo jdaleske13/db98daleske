@@ -9,4 +9,11 @@ block content
   -var results = results
   div(class="row")
   each item in results
-    div(class="col-sm-2") #{item}
+    -let destination = `dispatch(\"/drinks/update/?id=${item._id}\")`
+    div(class="col-sm-2", class="m-l") Item #{item.drink_name}(#{item.drink_flavor}) is #{item.drink_cost}
+      button.btn(class="btn-primary ml-l", onclick = destination) Update 
+    
+  script. 
+    function dispatch(path){
+      window.location.href=path
+    }
