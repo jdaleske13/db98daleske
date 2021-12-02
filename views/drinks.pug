@@ -4,6 +4,10 @@ extends layout
 block content
   h1= title
   p This is Daleske's website #{title}
+
+
+  a(href='/drinks/create')
+    button.btn.btn-primary(type="button") Create Page
   
   div(class="container-fluid")
   -var results = results
@@ -12,6 +16,10 @@ block content
     -let destination = `dispatch(\"/drinks/update/?id=${item._id}\")`
     div(class="col-sm-2", class="m-l") Item #{item.drink_name}(#{item.drink_flavor}) is #{item.drink_cost}
       button.btn(class="btn-primary ml-l", onclick = destination) Update 
+    -let dest = `dispatch(\"/drinks/detail/?id=${item._id}\")`
+      button.btn(class="btn-primary ml-l", onclick = dest) Details
+    -let des = `dispatch(\"/drinks/delete/?id=${item._id}\")`
+      button.btn(class="btn-primary ml-l", onclick = des) Delete
     
   script. 
     function dispatch(path){
